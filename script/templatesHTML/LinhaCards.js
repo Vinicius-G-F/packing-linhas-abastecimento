@@ -16,7 +16,7 @@ export default class LinhaCards{
             }
             this.maquinasHTML += `<div class="maquina">
             <p><strong>FML:</strong> ${maquina.fml}</p>
-            <p><strong>Pré-kitting:</strong> ${maquina['pre-kitting']}</p>
+            <p><strong>KIT:</strong> ${maquina['pre-kitting']}</p>
             <p class="qtd ${qtdBalanco}"><strong>QTD:</strong> ${maquina.qtd}</p>
             <button class="mostrar-materiais" data-fml="${maquina.fml}" data-prekitting="${maquina['pre-kitting']}">Mostrar materiais</button>
         </div>`;
