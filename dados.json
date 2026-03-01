@@ -1,0 +1,231 @@
+{
+    "linhas":{
+        "linha1":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "linha2":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "linha3":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "linha4":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "linha5":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "linha6":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "linha7":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "linha8":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "linha9":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "linha10":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "celulaHibrida":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ],
+        "servidor":[
+            {
+                "fml":"ID15",
+                "pre-kitting": "10695",
+                "qtd": 15
+            },
+            {
+                "fml":"M7Q2",
+                "pre-kitting": "10766",
+                "qtd": 231
+            },
+            {
+                "fml":"IP1A",
+                "pre-kitting": "10028",
+                "qtd": 8
+            }
+        ]
+    },
+    "materiais":[
+        {
+            "fml":"ID15",
+            "pre-kitting": "10695",
+            "adapter": "0865",
+            "caixa": "1730",
+            "acessorio": "1739"
+        },
+        {
+            "fml":"M7Q2",
+            "pre-kitting": "10766",
+            "teclado": "9988",
+            "caixa": "1730",
+            "acessorio": "1739"
+        },
+        {
+            "fml":"IP1A",
+            "pre-kitting": "10028",
+            "adapter": "0865",
+            "caixa": "1730",
+            "acessorio": "1739"
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Linhas de Packing - Abastecimento</title>
+</head>
+
+<body>
+
+    <main class="container">
+        <header class="topo">
+            <h1>Linhas de Packing - Abastecimento</h1>
+            <div>/ <button type="button" id="btn-linhas-do-comeco">linhas do começo</button> - <button type="button"
+                    id="btn-linhas-do-final">linhas do final</button></div>
+        </header>
+
+        <section>
+            <div class="linhas" id="parte-um">
+
+            </div>
+            <div class="linhas" id="parte-dois">
+
+            </div>
+        </section>
+    </main>
+
+    <div id="overlay" class="overlay"></div>
+
+    <dialog id="materiais" class="modal">
+        <header class="modal-header">
+            <h3>Detalhes da Máquina</h3>
+            <button class="btn-fechar" id="btnFechar">&times;</button>
+        </header>
+
+        <div class="modal-body" id="modal-body">
+
+        </div>
+
+        <footer class="modal-footer">
+            <button class="btn-fechar--foter" id="btnFecharFooter">Fechar</button>
+            <button class="btn-salvar" id="btn-salvar">Salvar</button>
+        </footer>
+    </dialog>
+
+    <div id="toast" class="toast">
+        Observação salva com sucesso!
+    </div>
+    <script type="module" src="./script/main.js"></script>
+</body>
+
+</html>

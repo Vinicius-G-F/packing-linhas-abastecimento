@@ -1,0 +1,274 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 10;
+}
+
+.blur {
+    filter: brightness(70%);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+.container {
+    padding: 30px;
+}
+
+.topo {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    color: #1e3a8a;
+}
+
+.selecionado {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.topo h1 {
+    font-size: 28px;
+}
+
+.linhas {
+    display: flex;
+    justify-content: space-between;
+}
+.linhas-ocultadas {
+    display: none;
+}
+
+/* Card da Linha */
+.linha {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.linha-header {
+    border-bottom: 2px solid #e5e7eb;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.linha-header h2 {
+    font-size: 20px;
+    color: #1e40af;
+}
+
+/* Container das máquinas */
+.maquinas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Card máquina */
+.maquina {
+    background: #f9fafb;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    font-size: 14px;
+}
+
+.maquina p {
+    margin-bottom: 4px;
+}
+
+/* Destaque quantidade */
+.qtd {
+    font-weight: bold;
+}
+
+.qtd.alto {
+    color: #16a34a; 
+}
+
+.qtd.medio {
+    color: darkorange;
+}
+
+.qtd.baixo {
+    color: #dc2626; 
+}
+
+/* Botão */
+button{
+    border: none;
+    cursor: pointer;
+    color: #1e3a8a;
+}
+
+.mostrar-materiais {
+    margin-top: 8px;
+    padding: 6px;
+    border: #2563eb solid 1.4px;
+    border-radius: 6px;
+    background-color: white;
+    color: #2563eb;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+button:hover {
+    opacity: 0.8;
+    transform: scale(1.03);
+}
+
+/* Remove estilo padrão feio */
+dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: 420px;
+    max-width: 90%;
+    z-index: 20;
+    /* ESSENCIAL 👇 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-fechar{
+    color: #dc2626;
+    background-color: white;
+    font-size: 26px;
+    padding: 4px 8px;
+}
+
+/* Fundo escurecido automático */
+dialog::backdrop {
+    background: rgba(0,0,0,0.5);
+}
+
+dialog[open] {
+    animation: aparecer 0.25s ease;
+}
+
+@keyframes aparecer {
+    from {
+        transform: translate(-50%, -55%) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-header,
+.modal-footer {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-footer {
+    border-top: 1px solid #eee;
+    border-bottom: none;
+    text-align: right;
+}
+
+.modal-body {
+    padding: 15px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.info-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.observacao {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.observacao textarea {
+    margin-top: 5px;
+    height: 80px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.btn-salvar{
+    margin-top: 8px;
+    padding: 6px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-size: 13px;
+}
+
+.btn-fechar--foter{
+    margin-top: 8px;
+    padding: 6px;
+    border: none;
+    border-radius: 6px;
+    background-color: #dc2626;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-size: 13px;
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #16a34a;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 15;
+}
+
+/* Estado visível */
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
