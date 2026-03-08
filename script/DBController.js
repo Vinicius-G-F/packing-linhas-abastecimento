@@ -14,7 +14,7 @@ export default class DBController {
             const resposta = await fetch('../dados.json');
             const dados = await resposta.json();
 
-            await this.delay(5000);
+            await this.delay(2000);
 
             return dados.linhas;
 

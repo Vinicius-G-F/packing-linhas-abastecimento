@@ -5,9 +5,9 @@ export default class ConfigController {
         this.carregadorDeLinhas = carregadorDeLinhas;
         this.modalConfigController = modalMateriaisController;
     }
-    carregarModificacoes() {
+    async carregarModificacoes() {
         const config = this.manipuladorDeDadosLS.obterConfig();
-        const dadosObs = this.manipuladorDeDadosLS.obterTodasObs();
+        this.carregarTema(config);
         const botoesNavPartes = document.getElementById("botoes-de-nav");
         if(!config.layout.forcarLinhasNaMesmaPagina){
             this.revezadorDePartes.setIntervalo(config.intervaloTrocaDePagina);
@@ -17,9 +17,7 @@ export default class ConfigController {
             botoesNavPartes.style.display = 'none';
             this.revezadorDePartes.desativar();
         }
-        this.carregadorDeLinhas.carregarLinhas(config, dadosObs);
-
-        this.carregarTema(config);
+        await this.carregadorDeLinhas.carregarLinhas();
     }
     carregarTema(config){
         if(config.tema.modoNoturno){

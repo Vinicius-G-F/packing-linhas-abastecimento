@@ -46,12 +46,10 @@ const revezadorDePartes = new RevezadorDePartes();
 
 const materiais = await dbController.getMateriais();
 const modalMateriaisController = new ModalMateriaisController(materiais, manipuladorDeDadosLS, revezadorDePartes, toastController);
-const carregadorDeLinhas = new CarregadorDeLinhas(dbController, modalMateriaisController);
+const carregadorDeLinhas = new CarregadorDeLinhas(dbController, modalMateriaisController, manipuladorDeDadosLS);
 
 
 const configController = new ConfigController(manipuladorDeDadosLS, revezadorDePartes, carregadorDeLinhas, modalMateriaisController);
 configController.carregarModificacoes();
 
 const modalConfigController = new ModalConfigController(manipuladorDeDadosLS, toastController, configPadrao, revezadorDePartes, configController);
-
-carregadorDeLinhas.loopDeCarregamento(manipuladorDeDadosLS)

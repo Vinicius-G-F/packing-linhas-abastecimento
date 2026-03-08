@@ -1,13 +1,14 @@
 import LinhaCards from "./templatesHTML/LinhaCards.js";
 
 export default class CarregadorDeLinhas {
-    constructor(dbController, modalController) {
+    constructor(dbController, modalController, manipuladorDeDadosLS) {
         this.linhasParteUm = document.getElementById("parte-um");
         this.linhasParteDois = document.getElementById("parte-dois");
         this.todasLinhas = document.getElementById("todas-linhas")
         this.linhasCompleta = [];
         this.dbController = dbController;
-
+        this.intervaloId = null;
+        this.manipuladorDeDadosLS = manipuladorDeDadosLS;
 
         this.linhasParteUm.addEventListener('click', (e) => {
             e.preventDefault();
@@ -56,7 +57,10 @@ export default class CarregadorDeLinhas {
 
     }
 
-    async carregarLinhas(config, dadosObs) {
+    async carregarLinhas() {
+        this.pararIntervalo(this.intervaloId);
+        const config = this.manipuladorDeDadosLS.obterConfig();
+        const dadosObs = this.manipuladorDeDadosLS.obterTodasObs();
         this.linhasCompleta = [];
         const dadosDasLinhas = await this.dbController.getLinhas();
         for (const linha in config.linhasExibidas) {
@@ -92,6 +96,7 @@ export default class CarregadorDeLinhas {
         this.linhasParteUm.innerHTML = '';
         this.linhasParteDois.innerHTML = '';
         this.injetarLinhasNoDOM(config);
+        await this.loopDeCarregamento()
     }
 
     injetarLinhasNoDOM(config) {
@@ -139,11 +144,18 @@ export default class CarregadorDeLinhas {
             this.todasLinhas.classList.remove("linhas-fracionadas-nove");
         }
     }
-    async loopDeCarregamento(manipuladorDeDadosLS){
-        setInterval(()=>{
-            const config = manipuladorDeDadosLS.obterConfig();
-            const dadosObs = manipuladorDeDadosLS.obterTodasObs();
+    async loopDeCarregamento(){
+        const config = this.manipuladorDeDadosLS.obterConfig();
+        const dadosObs = this.manipuladorDeDadosLS.obterTodasObs();
+        this.intervaloId = setInterval(()=>{
             this.carregarLinhas(config, dadosObs);
         }, 25000);
+    }
+
+    estaAtivoLoop(){
+        return this.intervaloId ? true : false;
+    }
+    pararIntervalo(){
+        clearInterval(this.intervaloId);
     }
 }
