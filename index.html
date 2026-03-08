@@ -12,16 +12,23 @@
 
     <main class="container">
         <header class="topo">
+            <button id="btn-config" class="config">
+                <img class="gear" src="./img/gear.svg" />
+            </button>
             <h1>Linhas de Packing - Abastecimento</h1>
-            <div>/ <button type="button" id="btn-linhas-do-comeco">linhas do começo</button> - <button type="button"
-                    id="btn-linhas-do-final">linhas do final</button></div>
+            <div id="botoes-de-nav">/ <button type="button" id="btn-linhas-do-comeco" class="btn-nav">linhas do
+                    começo</button> -
+                <button type="button" id="btn-linhas-do-final" class="btn-nav">linhas do final</button>
+            </div>
         </header>
 
         <section>
             <div class="linhas" id="parte-um">
-
             </div>
             <div class="linhas" id="parte-dois">
+
+            </div>
+            <div class="linhas linhas-mesma-linha" id="todas-linhas">
 
             </div>
         </section>
@@ -45,9 +52,94 @@
         </footer>
     </dialog>
 
+    <dialog id="modal-config" class="modal-config">
+
+        <form method="dialog" class="modal-content">
+
+            <h2>Configurações de Exibição</h2>
+            <fieldset class="layout-config">
+                <legend>Layout</legend>
+
+                <label class="switch">
+                    <input type="checkbox" id="forcar-mesma-pagina">
+                    <span>Forçar todas as linhas na mesma página</span>
+                </label>
+            </fieldset>
+            <fieldset class="display-config">
+                <legend>Exibição</legend>
+
+                <label class="switch">
+                    <input type="checkbox" id="ordenar-maquinas">
+                    <span>Ordenar máquinas por quantidade</span>
+                </label>
+
+                <label class="switch">
+                    <input type="checkbox" id="mostrar-obs">
+                    <span>Mostrar observações nos cards</span>
+                </label>
+            </fieldset>
+
+            <fieldset id="linhas-exibidas">
+                <legend>Linhas exibidas</legend>
+                <label><input type="checkbox" value="exibir-todas" id="exibir-todas" class="linha-checkbox">
+                    <strong>Exibir todas as linhas</strong></label>
+                <div class="grid-linhas">
+                    <label><input type="checkbox" value="linha1" id="linha1" class="linha-checkbox"> Linha 1</label>
+                    <label><input type="checkbox" value="linha2" id="linha2" class="linha-checkbox"> Linha 2</label>
+                    <label><input type="checkbox" value="linha3" id="linha3" class="linha-checkbox"> Linha 3</label>
+                    <label><input type="checkbox" value="linha4" id="linha4" class="linha-checkbox"> Linha 4</label>
+                    <label><input type="checkbox" value="linha5" id="linha5" class="linha-checkbox"> Linha 5</label>
+                    <label><input type="checkbox" value="linha6" id="linha6" class="linha-checkbox"> Linha 6</label>
+                    <label><input type="checkbox" value="linha7" id="linha7" class="linha-checkbox"> Linha 7</label>
+                    <label><input type="checkbox" value="linha8" id="linha8" class="linha-checkbox"> Linha 8</label>
+                    <label><input type="checkbox" value="linha9" id="linha9" class="linha-checkbox"> Linha 9</label>
+                    <label><input type="checkbox" value="linha10" id="linha10" class="linha-checkbox"> Linha 10</label>
+                    <label><input type="checkbox" value="hibrida" id="hibrida" class="linha-checkbox"> Célula
+                        Híbrida</label>
+                    <label><input type="checkbox" value="servidor" id="servidor" class="linha-checkbox">
+                        Servidor</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Tema</legend>
+
+                <label>
+                    <input type="radio" name="tema" value="claro" id="tema-claro" checked>
+                    Modo Claro
+                </label>
+
+                <label>
+                    <input type="radio" name="tema" value="escuro" id="tema-escuro">
+                    Modo Noturno
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend id="troca-automatica-legenda">Troca automática de página</legend>
+
+                <div class="range-wrapper">
+                    <input type="range" id="intervalo-paginas" min="2" max="30" value="29">
+                    <span id="valor-range">10s</span>
+                </div>
+            </fieldset>
+
+            <div class="botoes-modal">
+                <button type="button" id="btn-recomendado">Usar recomendadas</button>
+                <button type="button" id="btn-fechar-config">Fechar</button>
+                <button type="button" id="btn-salvar-config">Salvar</button>
+            </div>
+
+        </form>
+    </dialog>
+
     <div id="toast" class="toast">
-        Observação salva com sucesso!
     </div>
+
+    <div id="spinner" class="spinner-overlay">
+        <div class="loader"></div>
+    </div>
+
     <script type="module" src="./script/main.js"></script>
 </body>
 

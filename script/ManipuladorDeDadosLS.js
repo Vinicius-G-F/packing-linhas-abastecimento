@@ -1,34 +1,50 @@
 export default class ManipuladorDeDadosLS {
-    constructor() {
-        this.dadosSalvos = JSON.parse(localStorage.getItem("obs")) || [];
+    constructor(configPadrao) {
+        this.configPadrao = configPadrao;
     }
 
     salvarObs(fml, preKitting, obs) {
-
+        const dadosObs = JSON.parse(localStorage.getItem("obs")) || [];
         const obsDaMaquina = {
             fml,
             "pre-kitting": preKitting,
             obs
         };
 
-        const indexDaOBS = this.dadosSalvos.findIndex(item =>
+        const indexDaOBS = dadosObs.findIndex(item =>
             item.fml === fml && item["pre-kitting"] === preKitting
         );
 
         if (indexDaOBS === -1) {
-            this.dadosSalvos.push(obsDaMaquina);
+            dadosObs.push(obsDaMaquina);
         } else {
-            this.dadosSalvos[indexDaOBS] = obsDaMaquina;
+            dadosObs[indexDaOBS] = obsDaMaquina;
         }
 
-        localStorage.setItem("obs", JSON.stringify(this.dadosSalvos));
+        localStorage.setItem("obs", JSON.stringify(dadosObs));
     }
 
     obterObs(fml, preKitting) {
-        const obs = this.dadosSalvos.find(item => item.fml === fml && item["pre-kitting"] === preKitting);
+        const dadosObs = JSON.parse(localStorage.getItem("obs")) || [];
+        const obs = dadosObs.find(item => item.fml === fml && item["pre-kitting"] === preKitting);
         if(obs){
             return obs.obs;
         }
+        
         return "";
+    }
+
+    obterTodasObs(){
+        return JSON.parse(localStorage.getItem("obs")) || [];
+    }
+
+    salvarConfig(dados){
+        const tamanhoDaTela = window.innerWidth;
+        localStorage.setItem(`config[${tamanhoDaTela}]`, JSON.stringify(dados));
+    }
+
+    obterConfig(){
+        const tamanhoDaTela = window.innerWidth;
+        return JSON.parse(localStorage.getItem(`config[${tamanhoDaTela}]`)) || this.configPadrao;
     }
 }

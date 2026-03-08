@@ -1,9 +1,38 @@
+:root {
+    --bg-body: #f4f6f9;
+    --text-color: #333;
+    --cor-titulos: #1e3a8a;
+    --bg-btn: #eaeaea;
+    --card-bg: white;
+    --card-border: #e5e7eb;
+    --header-color: #1e3a8a;
+    --machine-bg: #f9fafb;
+    --modal-bg: white;
+}
+
+body.dark {
+    --bg-body: #0f172a;
+    --text-color: #e2e8f0;
+    --cor-titulos: #4576fc;
+    --bg-btn: #18233f;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --header-color: #60a5fa;
+    --machine-bg: #273449;
+    --modal-bg: #1e293b;
+}
+
+
 /* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
 }
+
 
 .overlay {
     position: fixed;
@@ -13,14 +42,11 @@
     z-index: 10;
 }
 
-.blur {
-    filter: brightness(70%);
-}
-
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f9;
-    color: #333;
+    background-color: var(--bg-body);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -34,6 +60,14 @@ body {
     color: #1e3a8a;
 }
 
+.config {
+    background: none;
+}
+
+.gear {
+    width: 40px;
+}
+
 .selecionado {
     text-decoration: underline;
     font-weight: 600;
@@ -41,19 +75,49 @@ body {
 
 .topo h1 {
     font-size: 28px;
+    color: var(--cor-titulos);
 }
-
+.btn-nav {
+    background-color: var(--bg-btn);
+    color: var(--cor-titulos);
+}
 .linhas {
     display: flex;
     justify-content: space-between;
+}
+
+.linhas-fracionadas {
+    justify-content: start;
+    gap: 36px;
+}
+
+.linhas-mesma-linha article {
+    width: auto;
+}
+
+.linhas-fracionadas-sete article {
+    width: 12%;
+}
+.linhas-fracionadas-cinco {
+    justify-content: start;
+    gap: 36px;
+}
+.linhas-fracionadas-cinco article {
+    width: 15%;
+}
+.linhas-fracionadas-nove article {
+    width: 10%;
 }
 .linhas-ocultadas {
     display: none;
 }
 
+
 /* Card da Linha */
 .linha {
-    background: white;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    transition: background 0.3s ease;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 15px;
@@ -63,14 +127,21 @@ body {
 }
 
 .linha-header {
-    border-bottom: 2px solid #e5e7eb;
+    border-bottom: 2px solid var(--card-border);
     margin-bottom: 15px;
     padding-bottom: 5px;
 }
 
 .linha-header h2 {
     font-size: 20px;
-    color: #1e40af;
+    color: var(--cor-titulos);
+}
+
+.horario-intervalo {
+    font-size: 0.8em;
+    text-align: center;
+    padding: 8px 0;
+    display: none;
 }
 
 /* Container das máquinas */
@@ -82,10 +153,10 @@ body {
 
 /* Card máquina */
 .maquina {
-    background: #f9fafb;
+    background: var(--machine-bg);
+    border: 1px solid var(--card-border);
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid #e5e7eb;
     font-size: 14px;
 }
 
@@ -99,7 +170,7 @@ body {
 }
 
 .qtd.alto {
-    color: #16a34a; 
+    color: #16a34a;
 }
 
 .qtd.medio {
@@ -107,11 +178,16 @@ body {
 }
 
 .qtd.baixo {
-    color: #dc2626; 
+    color: #dc2626;
+}
+
+.btn-ver-mais{
+    background-color: var(--card-bg);
+    color: var(--cor-titulos);
 }
 
 /* Botão */
-button{
+button {
     border: none;
     cursor: pointer;
     color: #1e3a8a;
@@ -122,8 +198,8 @@ button{
     padding: 6px;
     border: #2563eb solid 1.4px;
     border-radius: 6px;
-    background-color: white;
-    color: #2563eb;
+    background-color: var(--bg-btn);
+    color: var(--cor-titulos);
     cursor: pointer;
     transition: 0.2s ease;
     font-size: 13px;
@@ -137,6 +213,8 @@ button:hover {
 
 /* Remove estilo padrão feio */
 dialog {
+    background: var(--modal-bg);
+    color: var(--text-color);
     border: none;
     border-radius: 12px;
     padding: 0;
@@ -150,16 +228,16 @@ dialog {
     transform: translate(-50%, -50%);
 }
 
-.btn-fechar{
+.btn-fechar {
     color: #dc2626;
-    background-color: white;
+    background: none;
     font-size: 26px;
     padding: 4px 8px;
 }
 
 /* Fundo escurecido automático */
 dialog::backdrop {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 dialog[open] {
@@ -171,6 +249,7 @@ dialog[open] {
         transform: translate(-50%, -55%) scale(0.95);
         opacity: 0;
     }
+
     to {
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
@@ -180,15 +259,17 @@ dialog[open] {
 .modal-header,
 .modal-footer {
     padding: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--card-border);
 }
+
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .modal-footer {
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--card-border);
     border-bottom: none;
     text-align: right;
 }
@@ -218,15 +299,17 @@ dialog[open] {
 }
 
 .observacao textarea {
+    background-color: var(--card-border);
     margin-top: 5px;
     height: 80px;
     padding: 8px;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--bg-body);
     resize: none;
+    color: var(--text-color);
 }
 
-.btn-salvar{
+.btn-salvar {
     margin-top: 8px;
     padding: 6px;
     border: none;
@@ -238,7 +321,7 @@ dialog[open] {
     font-size: 13px;
 }
 
-.btn-fechar--foter{
+.btn-fechar--foter {
     margin-top: 8px;
     padding: 6px;
     border: none;
@@ -254,21 +337,137 @@ dialog[open] {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #16a34a;
     color: white;
     padding: 12px 18px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     font-size: 14px;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
     pointer-events: none;
-    z-index: 15;
+    z-index: 999;
 }
 
 /* Estado visível */
-.toast.show {
+.toast.sucesso {
     opacity: 1;
     transform: translateY(0);
+    background: #16a34a;
+}
+
+.toast.erro {
+    opacity: 1;
+    transform: translateY(0);
+    background: #dc2626;
+}
+
+.toast.aviso {
+    opacity: 1;
+    transform: translateY(0);
+    background: darkorange;
+}
+
+.toast.informacao {
+    opacity: 1;
+    transform: translateY(0);
+    background: #ccc;
+    color: black;
+}
+
+.modal-config {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: 600px;
+    max-width: 95%;
+}
+
+.modal-config::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.display-config {
+    display: flex;
+    gap: 10px;
+}
+
+.layout-config {
+    display: flex;
+    flex-direction: column;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+
+.grid-linhas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 16px;
+    margin-top: 6px;
+}
+
+.range-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.botoes-modal {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.botoes-modal button {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--card-border);
+    color: var(--text-color);
+}
+
+.desabilitado {
+    color: lightgray;
+}
+
+.spinner-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    display: none;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #e5e7eb;
+    border-top: 6px solid #2563eb;
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+    to { transform: rotate(360deg); }
 }

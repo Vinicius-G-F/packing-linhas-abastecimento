@@ -6,7 +6,9 @@ export default class RevezadorDePartes {
         this.btnLinhasDoFinal = document.getElementById("btn-linhas-do-final");
         this.idDoIntervalo = null;
         this.idDoTimeOut = null;
-
+        this.intervalo = 5000;
+        this.estaAtivo = true;
+        this.estaRevezando = false;
         this.mostrarPrimeiraParte();
 
         this.btnLinhasDoComeco.addEventListener("click", (e) => {
@@ -17,7 +19,7 @@ export default class RevezadorDePartes {
 
             this.idDoTimeOut = setTimeout(()=>{
                 this.revezar();
-            }, 10000)
+            }, this.intervalo + 5000)
         })
         this.btnLinhasDoFinal.addEventListener("click", (e) => {
             e.preventDefault();
@@ -27,18 +29,22 @@ export default class RevezadorDePartes {
 
             this.idDoTimeOut = setTimeout(()=>{
                 this.revezar();
-            }, 10000)
+            }, this.intervalo + 5000)
         })
     }
 
     revezar() {
+        if(!this.estaAtivo || this.estaRevezando){
+            return;
+        }
+        this.estaRevezando = true;
         this.idDoIntervalo = setInterval(() => {
             if (this.estaNaPrimeiraParte) {
                 this.mostrarSegundaParte();
             } else {
                 this.mostrarPrimeiraParte();
             }
-        }, 5000)
+        }, this.intervalo)
     }
 
 
@@ -66,11 +72,22 @@ export default class RevezadorDePartes {
         this.estaNaPrimeiraParte = false;
     }
     parar(){
+        this.estaRevezando = false;
         if (this.idDoIntervalo) {
             clearInterval(this.idDoIntervalo);
         }
         if(this.idDoTimeOut){
             clearTimeout(this.idDoTimeOut)
         }
+    }
+    setIntervalo(tempoEmSegundo){
+        this.intervalo = tempoEmSegundo * 1000;
+    }
+    desativar(){
+        this.estaAtivo = false;
+    }
+    ativar(){
+        this.revezar();
+        this.estaAtivo = true;
     }
 }

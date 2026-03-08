@@ -1,5 +1,5 @@
-export default class ModalController {
-    constructor(materiais, manipuladorDeDadosLS, revezadorDePartes) {
+export default class ModalMateriaisController {
+    constructor(materiais, manipuladorDeDadosLS, revezadorDePartes, toast) {
         this.materiais = materiais;
         this.manipuladorDeDadosLS = manipuladorDeDadosLS;
         this.corpoModal = document.getElementById("modal-body");
@@ -12,7 +12,6 @@ export default class ModalController {
         const btnFecharModal = document.getElementById("btnFechar");
         const btnFecharModalFooter = document.getElementById("btnFecharFooter");
         const btnSalvar = document.getElementById("btn-salvar");
-        const toast = document.getElementById("toast");
 
         btnFecharModal.addEventListener("click", (e) => {
             e.preventDefault();
@@ -29,15 +28,11 @@ export default class ModalController {
 
             const obsDigitada = this.obs.value;
             if(obsDigitada == "" || this.fml == null || this.preKitting == null){
-                alert("Os dados não foram salvos. =/");
+                toast.mostrarToastErro("Os dados não foram salvos. =/", 2500);
                 return
             }
             manipuladorDeDadosLS.salvarObs(this.fml, this.preKitting, obsDigitada);
-            toast.classList.add("show");
-
-            setTimeout(() => {
-                toast.classList.remove("show");
-            }, 2500);
+            toast.mostrarToastSucesso("Observação salva com sucesso!", 2500);
         })
     }
 
@@ -57,7 +52,7 @@ export default class ModalController {
         }
         this.corpoModal.innerHTML += `<div class="observacao">
                 <label for="obs">Observação:</label>
-                <textarea id="obs" placeholder="Digite alguma observação..."></textarea>
+                <textarea class="entrada-obs" id="obs" placeholder="Digite alguma observação..."></textarea>
             </div>`;
 
         
